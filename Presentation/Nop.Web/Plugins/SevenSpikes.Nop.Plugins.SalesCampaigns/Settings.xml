@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Setting Name="SaleCampaignDefaultSettings.WidgetZone">
+    <Value>productdetails_top</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.FontSize">
+    <Value>16</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.PaddingSize">
+    <Value>15,15,15,15</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.MarginSize">
+    <Value>0,0,20,0</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.ClockType">
+    <Value>5</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.ClockTextAlign">
+    <Value>15</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.FontColor">
+    <Value>#666666</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.FontWeight">
+    <Value>5</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.FontStyle">
+    <Value>5</Value>
+  </Setting>
+  <Setting Name="SaleCampaignDefaultSettings.BackgroundColor">
+    <Value>#f6f6f6</Value>
+  </Setting>
+  <Setting Name="SaleCampaignSettings.SaleCampaignScheduledTaskIntervalSeconds">
+    <Value>600</Value>
+  </Setting>
+  <Setting Name="SaleCampaignPluginSettings.EnableSaleCampaigns">
+    <Value>true</Value>
+  </Setting>  
+</Settings>

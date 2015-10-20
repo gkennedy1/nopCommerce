@@ -1,0 +1,391 @@
+﻿@using SevenSpikes.Nop.Plugins.AjaxFilters.Pro.Domain.Enums;
+@using SevenSpikes.Nop.Plugins.AjaxFilters.Pro.Models;
+@using Nop.Core;
+@using Nop.Core.Infrastructure;
+
+@model NopAjaxFiltersProPublicModel
+
+@{
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters.Pro/Themes/" + Model.ThemeName + "/Content/FilterWidget.css");
+
+    var supportRtl = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Rtl;
+    
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters.Pro/Themes/" + Model.ThemeName + "/Content/FilterWidget.rtl.css");
+    }
+
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.core.min.js");
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.data.odata.min.js");
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.data.min.js");
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.popup.min.js");
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.list.min.js");
+    Html.AddScriptParts("~/Scripts/kendo/2014.1.318/kendo.dropdownlist.min.js");
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var isInitialLoadEventTriggered = false;
+
+        @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+        {
+            <text>
+                $("#categories").kendoDropDownList({
+                    autoBind: true,
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    optionLabel: "@T("SevenSpikes.NopAjaxFiltersPro.Client.Category")",
+                    select: function(e) {
+                        if(e.item.index() == 0) {
+                            $('#home-page-filter-total-products-count').css('display', 'none');
+                        }
+                    },
+
+                    @if (Model.Specifications.Count == 0)
+                    {
+                        <text>
+        change: function(e) {
+            if(e.sender.selectedIndex == 0) {
+                $('#home-page-filter-total-products-count').css('display', 'none');
+                return;
+            }
+
+            $('#home-page-filter-total-products-count').css('display', 'inline-block').addClass('loading');
+
+            $.ajax({
+                url: "@(Url.Action("GetSpecification", "AjaxFiltersProSearch"))",
+                type: 'POST',
+                data: {
+                    specificationId: 0,
+
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                        {
+                                            <text>
+                    categoryId: this.value(),
+                    </text>
+                                        }
+
+                    selectedSpecificationIds: []
+                },
+                success: function (data) {
+                    if (data.length && data.length > 0) {
+                        var totalCount = data[0].TotalCount;
+
+                        $('#home-page-filter-total-products-count').removeClass('loading').text(totalCount);
+                    }
+                }
+            });
+        },
+        </text>
+                    }
+
+        dataSource: {
+            type: "json",
+            serverFiltering: true,
+            transport: {
+                read: {
+                        url: "@(Url.Action("GetCategories", "AjaxFiltersProSearch"))",
+                        type: "POST"
+                }
+            },
+            change: function (data) {
+                if(!isInitialLoadEventTriggered){
+                    isInitialLoadEventTriggered = true;
+                    $.event.trigger({ type: "nopAjaxFiltersProInitialLoadEvent" });
+                }
+            }
+        }
+    }).data("kendoDropDownList").list.addClass("home-page-filter-dropdown");
+    </text>
+        }
+
+    @if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+        {
+            <text>
+    $("#manufacturers").kendoDropDownList({
+        @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                    {
+                        <text>
+        cascadeFrom: "categories",
+        </text>
+                    }
+        dataTextField: "Name",
+        dataValueField: "Id",
+        optionLabel: "@T("SevenSpikes.NopAjaxFiltersPro.Client.Manufacturer")",
+        select: function(e) {
+            if(e.item.index() == 0) {
+                $('#home-page-filter-total-products-count').css('display', 'none');
+            }
+        },
+
+        @if (Model.Specifications.Count == 0)
+                    {
+                        <text>
+        change: function(e) {
+            if(e.sender.selectedIndex == 0) {
+                $('#home-page-filter-total-products-count').css('display', 'none');
+                return;
+            }
+
+            $('#home-page-filter-total-products-count').css('display', 'inline-block').addClass('loading');
+
+            $.ajax({
+                url: "@(Url.Action("GetSpecification", "AjaxFiltersProSearch"))",
+                type: 'POST',
+                data: {
+                    specificationId: 0,
+
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                        {
+                                            <text>
+                    categoryId: $("#categories").data('kendoDropDownList').value(),
+                    </text>
+                                        }
+
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                        {
+                                            <text>
+                    manufacturerId: this.value(),
+                    </text>
+                                        }
+
+                    selectedSpecificationIds: [  ]
+                },
+                success: function (data) {
+                    if (data.length && data.length > 0) {
+                        var totalCount = data[0].TotalCount;
+
+                        $('#home-page-filter-total-products-count').removeClass('loading').text(totalCount);
+                    }
+                }
+            });
+        },
+        </text>
+                    }
+
+        dataSource: {
+            type: "json",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: "@(Url.Action("GetManufacturers", "AjaxFiltersProSearch"))",
+                    type: "POST",
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                {
+                                    <text>
+                    data: function () {
+                        return {
+                            categoryId: $("#categories").data('kendoDropDownList').value()
+                        };
+                    }
+                    </text>
+                                }
+                }
+            },
+            change: function (data) {
+                if(!isInitialLoadEventTriggered){
+                    isInitialLoadEventTriggered = true;
+                    $.event.trigger({ type: "nopAjaxFiltersProInitialLoadEvent" });
+                }
+            },
+            @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                        {
+                            <text>
+            requestStart: function(e){
+                $('#home-page-filter-total-products-count').css('display', 'inline-block').addClass('loading');
+            },
+            requestEnd: function(e) {
+                if (e.response.length && e.response.length > 0) {
+                    var totalCount = e.response[0].TotalCount;
+
+                    $('#home-page-filter-total-products-count').removeClass('loading').text(totalCount);
+                }
+            }
+            </text>
+                        }
+        }
+    }).data("kendoDropDownList").list.addClass("home-page-filter-dropdown");
+    </text>
+        }
+
+    @{
+            var selectedSpecificationIds = new List<string>();
+
+            for (int i = 0; i < Model.Specifications.Count; i++)
+            {
+                var cascadeFrom = string.Empty;
+
+                if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                {
+                    cascadeFrom = "categories";
+                }
+
+                if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                {
+                    cascadeFrom = "manufacturers";
+                }
+
+                if (i > 0)
+                {
+                    cascadeFrom = "specification_" + Model.Specifications[i - 1].Id;
+
+                    selectedSpecificationIds.Add(string.Format("$('#specification_{0}').data('kendoDropDownList').value()", Model.Specifications[i - 1].Id));
+                }
+
+                <text>
+    $("#specification_@(Model.Specifications[i].Id)").kendoDropDownList({
+        cascadeFrom: "@(cascadeFrom)",
+        dataTextField: "Name",
+        dataValueField: "Id",
+        optionLabel: "@Html.Raw(Model.Specifications[i].Name)",
+        select: function(e) {
+            if(e.item.index() == 0) {
+                $('#home-page-filter-total-products-count').css('display', 'none');
+            }
+        },
+
+        @if (i == Model.Specifications.Count - 1)
+                        {
+                            var selectedSpecificationsAsString = selectedSpecificationIds.Count > 0 ? string.Join(", ", selectedSpecificationIds) : "";
+
+                            if (!string.IsNullOrEmpty(selectedSpecificationsAsString))
+                            {
+                                selectedSpecificationsAsString += ", ";
+                            }
+
+                            selectedSpecificationsAsString += "this.value()";
+
+                            <text>
+        change: function(e) {
+            if(e.sender.selectedIndex == 0) {
+                $('#home-page-filter-total-products-count').css('display', 'none');
+                return;
+            }
+
+            $('#home-page-filter-total-products-count').css('display', 'inline-block').addClass('loading');
+
+            $.ajax({
+                url: "@(Url.Action("GetSpecification", "AjaxFiltersProSearch"))",
+                type: 'POST',
+                data: {
+                    specificationId: 0,
+
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                            {
+                                                <text>
+                    categoryId: $("#categories").data('kendoDropDownList').value(),
+                    </text>
+                                            }
+
+                    @if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                            {
+                                                <text>
+                    manufacturerId: $("#manufacturers").data('kendoDropDownList').value(),
+                    </text>
+                                            }
+
+                    selectedSpecificationIds: [ @Html.Raw(selectedSpecificationsAsString) ]
+                },
+                success: function (data) {
+                    if (data.length && data.length > 0) {
+                        var totalCount = data[0].TotalCount;
+
+                        $('#home-page-filter-total-products-count').removeClass('loading').text(totalCount);
+                    }
+                }
+            });
+        },
+        </text>
+                        }
+
+        dataSource: {
+            type: "json",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: "@(Url.Action("GetSpecification", "AjaxFiltersProSearch"))",
+                    type: "POST",
+                    data: function () {
+                        return {
+                            specificationId: @(Model.Specifications[i].Id),
+
+                            @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                            {
+                                                <text>
+                            categoryId: $("#categories").data('kendoDropDownList').value(),
+                            </text>
+                                            }
+
+                            @if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                                            {
+                                                <text>
+                            manufacturerId: $("#manufacturers").data('kendoDropDownList').value(),
+                            </text>
+                                            }
+
+                            selectedSpecificationIds: [ @Html.Raw(string.Join(", ", selectedSpecificationIds)) ]
+                        };
+                    }
+                }
+            },
+            requestStart: function(e){
+                $('#home-page-filter-total-products-count').css('display', 'inline-block').addClass('loading');
+            },
+            requestEnd: function(e) {
+                if (e.response.length && e.response.length > 0) {
+                    var totalCount = e.response[0].TotalCount;
+
+                    $('#home-page-filter-total-products-count').removeClass('loading').text(totalCount);
+                }
+            }
+        }
+    }).data("kendoDropDownList").list.addClass("home-page-filter-dropdown");
+    </text>
+            }
+        }
+    });
+    
+    $(document).on('nopAjaxFiltersProInitialLoadEvent', function() {
+        $('.home-page-filter-selector:first input').change(function() {
+            if ($(this).val() != "") {
+                $(".search-button").attr('disabled', false);
+            } else {
+                $(".search-button").attr('disabled', 'disabled');
+            }
+        });
+    });
+</script>
+
+@using (Html.BeginForm("Search", "AjaxFiltersProSearch", FormMethod.Post, new { id = "AjaxFiltersProForm" }))
+{
+    <div class="home-page-filters-wrapper">
+        <div class="home-page-filters">
+            <div class="home-page-filter-selectors">
+                @if (Model.UIMode == NopAjaxFiltersProUIMode.CategoryOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                {
+                    <div class="home-page-filter-selector">
+                        <input type="hidden" id="categories" name="categoryId" value="0" />
+                    </div>
+                }
+
+                @if (Model.UIMode == NopAjaxFiltersProUIMode.ManufacturerOnly || Model.UIMode == NopAjaxFiltersProUIMode.CategoryAndManufacturer)
+                {
+                    <div class="home-page-filter-selector">
+                        <input type="hidden" id="manufacturers" name="manufacturerId" value="0" />
+                    </div>
+                }
+
+                @for (int i = 0; i < Model.Specifications.Count; i++)
+                {
+                    <div class="home-page-filter-selector">
+                        <input type="hidden" id="specification_@(Model.Specifications[i].Id)" name="specificationOptions" value="0" />
+                    </div>
+                }
+            </div>
+            <div class="home-page-filter-button">
+                <span id="home-page-filter-total-products-count" class="results-number"></span>
+                <button type="button" class="search-button" onclick="document.getElementById('AjaxFiltersProForm').submit();" disabled="disabled">@T("SevenSpikes.NopAjaxFiltersPro.Client.Search")</button>
+            </div>
+        </div>
+    </div>
+}

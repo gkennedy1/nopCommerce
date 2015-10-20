@@ -1,0 +1,63 @@
+.products-carousel .item-info,
+.products-carousel .item-info .short-description,
+.products-carousel .item-info .prices {
+	text-align: right;
+}
+*{
+	direction: rtl;
+}
+.nop-jcarousel .jcarousel-prev-horizontal{
+	right: -60px;
+	left: auto;
+}
+.nop-jcarousel .jcarousel-next-horizontal{
+	left: -60px;
+	right: auto;
+}
+.nop-jcarousel .jcarousel-next-vertical{
+	left: 0;
+	right: 0;
+}
+.nop-jcarousel .jcarousel-prev-vertical{
+	left: 0;
+	right: 0;
+}
+.nop-jcarousel .item-picture img{
+	right: 0;
+	left: 0;
+}
+.manufacturers-carousel .item-picture a img{
+	right: 0;
+	left: 0;
+}
+.products-carousel .jcarousel-prev-horizontal,
+.categories-carousel .jcarousel-prev-horizontal{
+	left: -60px;
+	right: auto;
+	margin-right: 0 !important;
+}
+.products-carousel .jcarousel-next-horizontal,
+.categories-carousel .jcarousel-next-horizontal{
+	right: -60px;
+	left: auto;
+	margin-left: 0 !important;
+}
+.manufacturers-carousel .jcarousel-prev-horizontal{
+	left: auto;
+	right: -60px;
+}
+.manufacturers-carousel .jcarousel-next-horizontal{
+	left: -60px;
+	right: auto;
+}
+.manufacturers-carousel .jcarousel-prev-horizontal{
+	right: -60px;
+	left: auto;
+}
+.manufacturers-carousel .jcarousel-next-horizontal{
+	left: -60px;
+	right: auto;
+}
+.product-rating-box .rating div {
+    background-position:right center;
+}

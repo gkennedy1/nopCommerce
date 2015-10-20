@@ -1,0 +1,330 @@
+﻿/* GLOBAL TABLES */
+.footable td>label{
+    display:none;
+}
+table tr:nth-child(2n) td{
+    background-color:#fdfdfd;
+}
+.cart, .data-table,
+.compare-products-table {
+	margin: 0 0 20px;
+}
+.forums-table-section table{
+    margin:0 0 100px;
+}
+.cart th, .data-table th,
+.forums-table-section th {
+    padding: 10px;
+    white-space: nowrap;
+    color:#909090;
+    text-transform:uppercase;
+    border-bottom: 1px solid #e5e5e5;
+}
+.cart td, .data-table td,
+.compare-products-table td,
+.forums-table-section td {
+	min-width: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 20px 10px;
+    text-transform:uppercase;
+    color:#303030;
+}
+.compare-products-table .overview td{
+    border-top: 1px solid #e5e5e5;
+}
+.forums-table-section td{
+    text-align:right;
+}
+.data-table td.date{
+    width:150px;
+} 
+.cart a, .data-table a,
+.compare-products-table a,
+.forums-table-section a {
+    font-family:'proxima-nova';
+    letter-spacing:0.5px;
+}
+.forums-table-section a{
+    font-family:'proxima-nova';
+}
+.forum-description{
+    text-transform:none;
+}
+.forum-page .forum-description{
+    text-align:center;
+    margin:0 0 30px;
+}
+.forums-table-section label{
+    color:#888;
+}
+
+.cart .remove-from-cart,
+.cart .add-to-cart,
+.data-table .select-boxes {
+    text-align: center;
+}
+.cart .unit-price {
+    white-space: nowrap;
+}
+.cart .qty-input {
+    width: 50px;
+    text-align: center;
+}
+.cart .subtotal {
+    color: #303030;
+    white-space: nowrap;
+    border-bottom:1px solid #e5e5e5; 
+}
+
+
+/* COMPARE PRODUCTS TABLE */
+
+
+.compare-products-table .overview p:first-child {
+    margin: 0 0 10px;
+}
+.compare-products-table .overview p:last-child {
+    position: relative;
+    max-width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.compare-products-table .overview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.compare-products-table .product-name td {
+    background: #f6f6f6;
+}
+.compare-products-table .product-name a{
+    font-family:'proxima-nova';
+    letter-spacing:0.5px;
+}
+.compare-products-table .product-price td {
+    color: #333;
+}
+.compare-products-table > tbody tr td:first-child{
+    color: #888;
+}
+
+.compare-products-table-mobile img {
+    max-width: 160px;
+}
+
+
+/* TIER PRICE TABLES */
+
+
+.tier-prices {
+	margin: 0 0 20px;
+}
+.tier-prices .prices-header {
+	margin: 0 0 10px;
+    font-size: 18px;
+}
+.tier-prices .prices-header strong { 
+    color: #333333;
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+    position: relative;
+    font-family:'proxima-nova';
+    text-transform:uppercase;
+}
+.tier-prices .prices-header strong:before{
+    background: #333333;
+    content: "";
+    display: block;
+    height: 3px;
+    left: 0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    position: absolute;
+    width: 70px;
+}
+.prices-table {
+    width: 100%;
+    border:1px solid #dddddd;
+    overflow: hidden;
+}
+.prices-row {
+    float: right;
+    width: 50%;
+}
+.prices-row .field-header{
+    color:#333;
+}
+.prices-row > div {
+    padding: 10px;
+    border-left: 1px solid #c9c9c9;
+    border-top: 1px solid #c9c9c9;
+}
+.prices-row > div:first-child {
+	border-top: 0;
+    text-transform:uppercase;
+    font-family:proxima-nova;
+}
+.prices-row:first-child > div {
+	border-left: 0;
+}
+.prices-table .field-header {
+    font-weight: normal;
+}
+.tier-prices .item-price {
+	color: #898989;
+    font-family:proxima-nova;
+}
+
+@media all and (min-width: 769px) {
+
+.prices-table {
+	display: table;
+	background: #fff;
+}
+.prices-row {
+	display: table-row;
+	float: none;
+	width: auto;
+}
+.prices-row > div {
+	display: table-cell;
+}
+.prices-row:first-child > div {
+	border-left: 1px solid #c9c9c9;
+	border-top: 0 !important;
+}
+.prices-row > div:first-child {
+	border-top: 1px solid #c9c9c9;
+	border-left: 0;
+    color:#333;
+}
+
+
+}
+
+/* TIER PRICE TABLES */
+
+
+.product-specs-box .data-table td {
+    padding: 5px;
+}
+.product-specs-box .data-table .odd td {
+}
+.product-specs-box .data-table .even td {
+}
+.product-specs-box .data-table .a-left.spec-name{
+    font-family:'proxima-nova';
+    text-transform:uppercase;
+    height:52px;
+    border-left:none;
+}
+.product-specs-box .data-table .a-left.spec-value{
+    color:#898989;
+    font-family:'proxima-reg';
+    border-right:none;
+}
+.product-specs-box .data-table .a-left.spec-value a{
+    text-decoration:underline;
+}
+/********** FOOTABLE CUSTOM CSS **********/
+
+
+
+.footable-first-column {
+	text-align: center;
+}
+.footable-first-column .item-count {
+	font-size: 13px !important;
+    display:none;
+}
+.footable.breakpoint > tbody > tr > td > span.footable-toggle {
+	display: block;
+    min-width: 16px;
+	height: 16px;
+	overflow: hidden;
+}
+.footable-row-detail {
+	text-align: right;
+}
+.footable-row-detail-cell {
+	text-align: right !important;
+}
+.footable-row-detail-row {
+	margin: 0 0 10px;
+    display: table-row;
+}
+.footable-row-detail-name {
+	margin: 0 0 5px;
+	font-style: italic;
+    display: table-cell;
+    padding: 7px 10px;
+    color:#898989;
+}
+.footable-row-detail-value {
+    display: table-cell;
+}
+.footable-row-detail .footable-row-detail-value label{
+    display:none;
+}
+
+/* toggle style change */
+
+.footable-toggle {
+	background: url('../img/table-plus.png') no-repeat center;
+}
+.footable-detail-show .footable-toggle {
+	background: url('../img/table-minus.png') no-repeat center;
+}
+.footable-toggle:before {
+	display: none !important;
+}
+.totals table tr:nth-child(2n) td{
+    background-color:transparent;
+}
+
+/* hidding item counter in different tables */
+
+@media all and (max-width: 809px) {
+.order-summary-content .cart .item-count,
+.wishlist-page .cart .item-count,
+.section.products .data-table .item-count,
+.section.shipments .data-table .item-count  {
+	display: none;
+}
+}
+
+@media all and (max-width: 612px) {
+/* add downloads table item-count here if "my account" is only one column on tablet landscape(768) */
+.return-request-page .data-table .item-count {
+	display: none;
+}
+}
+
+@media all and (max-width: 506px) {
+.reward-points-history .data-table .item-count {
+	display: none;
+}
+}
+
+.compare-products-table-mobile .item-count,
+.downloadable-products-page .data-table .item-count
+/* remove downloads table item-count from here if "my account" is only one column on tablet landscape(768) */ {
+	display: none;
+}
+
+.go-to-page {
+	display: inline-block !important;
+	font-size: 13px !important;
+}
+
+@media all and (min-width: 1001px) {
+
+    .footable-first-column .item-count{
+        display:block;
+    }
+
+}

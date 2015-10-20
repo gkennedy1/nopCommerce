@@ -1,0 +1,68 @@
+﻿@using System.Text;
+@using SevenSpikes.Nop.Plugins.SaleCampaigns.Models
+@using SevenSpikes.Nop.Plugins.SaleCampaigns.Domain.Enums;
+
+@model SaleCampaignPublicModel
+
+@{
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.SalesCampaigns/Scripts/SaleCampaigns.js");
+
+    var margin = string.Format("{0}px {1}px {2}px {3}px", Model.SaleCampaignCustomization.MarginTop ?? 0, Model.SaleCampaignCustomization.MarginRight ?? 0,
+        Model.SaleCampaignCustomization.MarginBottom ?? 0, Model.SaleCampaignCustomization.MarginLeft ?? 0);
+
+    var padding = string.Format("{0}px {1}px {2}px {3}px", Model.SaleCampaignCustomization.PaddingTop ?? 0, Model.SaleCampaignCustomization.PaddingRight ?? 0,
+        Model.SaleCampaignCustomization.PaddingBottom ?? 0, Model.SaleCampaignCustomization.PaddingLeft ?? 0);
+
+    StringBuilder sb = new StringBuilder();
+
+    sb.Append("-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; "); // base styling
+    sb.Append(string.Format("background-color: {0}; ", Model.SaleCampaignCustomization.BackgroundColor));
+    sb.Append(string.Format("color: {0}; ", Model.SaleCampaignCustomization.FontColor));
+    sb.Append(string.Format("font-weight: {0}; ", Model.SaleCampaignCustomization.FontWeight));
+    sb.Append(string.Format("font-style: {0}; ", Model.SaleCampaignCustomization.FontStyle));
+    sb.Append(string.Format("font-size: {0}px; ", Model.SaleCampaignCustomization.FontSize));
+    sb.Append(string.Format("margin: {0}; ", margin));
+    sb.Append(string.Format("padding: {0}; ", padding));
+    sb.Append(string.Format("text-align: {0}; ", Model.SaleCampaignCustomization.ClockTextAlign.ToString().ToLower()));
+
+    if (!string.IsNullOrEmpty(Model.SaleCampaignCustomization.CustomCSS))
+    {
+        sb.Append(Model.SaleCampaignCustomization.CustomCSS);
+    }
+
+    string styling = sb.ToString();
+
+    if (Model.DateDifferenceInSeconds > 0)
+    {
+        var clockType = Model.SaleCampaignCustomization.ClockType;
+
+        <div style="@styling" id="countdownTimerContainer">
+            @if (clockType == SaleCampaignClockType.DaysHoursMinutesSeconds
+                || clockType == SaleCampaignClockType.HoursMinutesSeconds
+                || clockType == SaleCampaignClockType.OnlyDays)
+            {
+                <text>
+                    @T("SevenSpikes.Plugins.SaleCampaigns.Public.SaleEndsIn")
+                    <span data-time="@Model.DateDifferenceInSeconds" data-clocktype="@((int)clockType)" class="countdownTimer"></span>
+                </text>
+            }
+            else
+            {
+                <text>
+                    @T("SevenSpikes.Plugins.SaleCampaigns.Public.OnSaleUntil")
+                    <span>@Model.DateUntil</span>
+                </text>
+            }
+        </div>
+
+        <script type="text/javascript">
+            var localizationArray =
+            {
+                'day': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Day")', 'days': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Days")',
+                'hour': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Hour")', 'hours': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Hours")',
+                'minute': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Minute")', 'minutes': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Minutes")',
+                'second': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Second")', 'seconds': '@T("SevenSpikes.Plugins.SaleCampaigns.Public.Seconds")',
+            };
+        </script>
+    }
+}

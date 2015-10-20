@@ -1,0 +1,73 @@
+﻿@using Nop.Web.Models.Catalog
+@using SevenSpikes.Theme.Urban
+@using SevenSpikes.Theme.Urban.Models.Admin
+
+@model UrbanThemeSettingsModel
+
+<div class="map-wrapper">
+    <div class="footer-map" style="display: none;" data-pathtoimages="@Url.RouteUrl("HomePage")@Constants.PathToImagesFolder" data-latitude="@Model.Latitude" data-longitude="@Model.Longitude"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var scrollBarrier = 200;
+        var windowObj = $(window);
+
+        if ($('body').outerHeight() < windowObj.outerHeight() + scrollBarrier) {
+            loadFooterMapScript();
+        }
+        else {
+            windowObj.on('scroll.urbanfootermap', function () {
+                if ($(this).scrollTop() > scrollBarrier) {
+                    $(this).off('scroll.urbanfootermap');
+                    loadFooterMapScript();
+                }
+            });
+        }
+    });
+
+    var footerMap;
+
+    function loadFooterMapScript() {
+        var script = document.createElement("script");
+        script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initializeFooterMap";
+        document.body.appendChild(script);
+    }
+
+    function initializeFooterMap() {
+        var mapWrapper = $('.footer-map');
+        mapWrapper.show();
+        var markerX = mapWrapper.attr('data-latitude');
+        var markerY = mapWrapper.attr('data-longitude');
+
+        var mapOptions = {
+            center: new google.maps.LatLng(markerX, markerY),
+            zoom: 15,
+            draggable: false,
+            scrollwheel: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [{
+                "stylers": [{ "saturation": -100 }]
+            }]
+        };
+
+        footerMap = new google.maps.Map(mapWrapper[0], mapOptions);
+
+        var image = mapWrapper.attr('data-pathtoimages') + '/footer-map-marker-icon.png';
+
+        google.maps.event.addListenerOnce(footerMap, 'idle', function () {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(markerX, markerY),
+                map: footerMap,
+                title: '',
+                icon: image,
+                draggable: false
+            });
+
+            marker.setMap(footerMap);
+
+            //footerMap.setCenter(new google.maps.LatLng(markerX, markerY));
+        });
+    }
+
+</script>

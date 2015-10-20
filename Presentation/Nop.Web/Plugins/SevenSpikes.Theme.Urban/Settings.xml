@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Setting Name="UrbanThemeSettings.NumberOfHomepageCategoryProducts">
+    <Value>4</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.EnableFooterMapOnHomePage">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.EnableFooterMapOnAllPages">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.IsMenuMobile">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.ItemBoxHoverEffect">
+    <Value>hover-1</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.IsCategoryPageOneColumn">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.IsQuickTabsOneColumn">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="UrbanThemeSettings.IsHeaderInsideHomePageMainSlider">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="ordersettings.onepagecheckoutenabled">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="mediasettings.associatedproductpicturesize">
+    <Value>530</Value>
+  </Setting>
+  <Setting Name="mediasettings.categorythumbpicturesize">
+    <Value>440</Value>
+  </Setting>
+  <Setting Name="mediasettings.manufacturerthumbpicturesize">
+    <Value>350</Value>
+  </Setting>
+  <Setting Name="mediasettings.productdetailspicturesize">
+    <Value>870</Value>
+  </Setting>
+  <Setting Name="mediasettings.productthumbpicturesize">
+    <Value>530</Value>
+  </Setting>
+  <Setting Name="mediasettings.productthumbpicturesizeonproductdetailspage">
+    <Value>190</Value>
+  </Setting>
+  <Setting Name="mediasettings.maximumimagesize">
+    <Value>1920</Value>
+  </Setting>
+  <Setting Name="catalogsettings.showbestsellersonhomepage">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="catalogsettings.numberofbestsellersonhomepage">
+    <Value>4</Value>
+  </Setting>
+  <Setting Name="NopAjaxFiltersSettings.ShowNumberOfReturnedProductsSelector">
+    <Value>.product-selectors</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.ZoomWidth">
+    <Value>350</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.ZoomHeight">
+    <Value>425</Value>
+  </Setting>
+  <Setting Name="JCarouselDefaultSettings.ImageSize">
+    <Value>200</Value>
+  </Setting>
+  <Setting Name="JCarouselDefaultSettings.ShowShortDescription">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="JCarouselDefaultSettings.ShowDetailsButton">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.MegaMenuCategoryTemplate">
+    <Value>CategoryMenuTemplate.WithPictures</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.MegaMenuManufacturerTemplate">
+    <Value>ManufacturerMenuTemplate.WithPictures</Value>
+  </Setting>
+  <Setting Name="quickviewsettings.productitemselectorchild">
+    <Value>.buttons-inner-wrapper</Value>
+  </Setting>
+  <Setting Name="megamenusettings.categoriesimagesize">
+    <Value>200</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.ManufacturerImageSize">
+    <Value>90</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.ProductsImageSize">
+    <Value>90</Value>
+  </Setting>
+  <Setting Name="NopAjaxCartSettings.ProductAddedToCartImageSize">
+    <Value>160</Value>
+  </Setting>
+  <Setting Name="NopAjaxCartSettings.MiniProductDetailsViewImageSize">
+    <Value>125</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.ProductDetailsPictureSize">
+    <Value>250</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.ProductThumbPictureSize">
+    <Value>100</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.ZoomWidth">
+    <Value>350</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.ZoomHeight">
+    <Value>425</Value>
+  </Setting>
+  <Setting Name="InstantSearchSettings.PictureSize">
+    <Value>80</Value>
+  </Setting>
+</Settings>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+  <LocaleResource Name="SevenSpikes.UrbanTheme">
+    <Value>Nop Urban Theme</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.ThemeSettings">
+    <Value>Urban Theme Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.TabTitle.GeneralSettings">
+    <Value>General Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.TabTitle.AdditionalSettings">
+    <Value>Additional Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.InstagramUrl">
+    <Value>Instagram Url</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.InstagramUrl.Hint">
+    <Value>Enter your Instagram page link.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsMenuMobile">
+    <Value>Menu Mobile Look</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsMenuMobile.Hint">
+    <Value>Enable the mobile app menu look.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.ItemBoxHoverEffect">
+    <Value>Item Box Hover Effect</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.ItemBoxHoverEffect.Hint">
+    <Value>Choose between different hover effects for the product box.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsCategoryPageOneColumn">
+    <Value>Catalog Pages One Column layout</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsCategoryPageOneColumn.Hint">
+    <Value>Check to make all catalog pages in One Column.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsQuickTabsOneColumn">
+    <Value>Are Quick Tabs One Column</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsQuickTabsOneColumn.Hint">
+    <Value>Check to make the quick tabs in One Column. This setting refers to the plugin Nop Quick Tabs.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsHeaderInsideHomePageMainSlider">
+    <Value>Place Header Inside Home Page Main Slider</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsHeaderInsideHomePageMainSlider.Hint">
+    <Value>Check to place the header inside the home page main slider. This setting works only if you use the Anywhere Sliders plugin inside the "home_page_main_slider" widget zone.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.HomepageCategoriesIds">
+    <Value>Home Page Categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.HomepageCategoriesIds.Hint">
+    <Value>Choose the categories that you want to show on the home page as tabs.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.NumberOfHomepageCategoryProducts">
+    <Value>Number Of Homepage Category Products</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.NumberOfHomepageCategoryProducts.Hint">
+    <Value>Set the number of products shown in each home page category.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.EnableFooterMapOnHomePage">
+    <Value>Enable Map On Home Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.EnableFooterMapOnHomePage.Hint">
+    <Value>Show the map in the footer only on the home page.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.EnableFooterMapOnAllPages">
+    <Value>Enable Map On All Other Pages</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.EnableFooterMapOnAllPages.Hint">
+    <Value>Show the map in the footer on all pages except the Home Page.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.Latitude">
+    <Value>Latitude</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.Latitude.Hint">
+    <Value>Latitude of your marker.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.Longitude">
+    <Value>Longitude</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.Longitude.Hint">
+    <Value>Longitude of your marker.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Categories">
+    <Value>All Categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.NoResults">
+    <Value>There are no categories to display.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Catalog.Name">
+    <Value>Category Name</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Catalog.DisplayOrder">
+    <Value>Display Order</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultCategoryNavigationEnabled">
+    <Value>Enable default nopCommerce category navigation</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultCategoryNavigationEnabled.Hint">
+    <Value>When checked the default nopCommerce category navigation will be displayed</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultManufacturerNavigationEnabled">
+    <Value>Enable default nopCommerce manufacturer navigation</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultManufacturerNavigationEnabled.Hint">
+    <Value>When checked the default nopCommerce manufacturer navigation will be displayed</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultVendorNavigationEnabled">
+    <Value>Enable default nopCommerce vendor navigation</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Admin.Settings.IsDefaultVendorNavigationEnabled.Hint">
+    <Value>When checked the default nopCommerce vendor navigation will be displayed</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.HeaderLinks.Selector">
+    <Value>Selectors</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.HeaderLinks.UserLinks">
+    <Value>User Links</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.HomePageCategories.NoProductsFound">
+    <Value>There are no products found in this category</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Menu.Title">
+    <Value>Menu</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.EmailAt">
+    <Value>[at]</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Catalog.ShopNow">
+    <Value>Shop Now</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.Newsletter.Hint">
+    <Value>Sign up to get the latest on sales, new releases and more</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.FAQ">
+    <Value>FAQ</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.Help">
+    <Value>Help</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.LoginRegistrationInfo">
+    <Value>Login info</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.GoTo">
+    <Value>Go to...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.GoToPage">
+    <Value>Product's page</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Urban.Common.FlyoutShoppingCart.Title">
+    <Value>Your Shopping Bag</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.Title">
+    <Value>URBAN Newsletter!</Value>
+  </LocaleResource>
+</Language>

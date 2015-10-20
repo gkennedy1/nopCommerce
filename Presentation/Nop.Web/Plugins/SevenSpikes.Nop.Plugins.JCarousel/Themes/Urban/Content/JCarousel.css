@@ -1,0 +1,371 @@
+/*
+* Copyright 2012 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+* http://www.nop-templates.com/t/licensinginfo
+*/
+
+/*** TITLE & CONTAINERS ***/
+
+.nop-jcarousel {
+	position: relative;
+    margin: 20px 60px 60px;
+}
+.nop-jcarousel .carousel-title {
+	padding: 8px 12px 48px;
+    font-size: 24px;
+    font-weight: normal;
+}
+.nop-jcarousel .carousel-title span {
+    color: #333333;
+    font-family: "proxima-nova";
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.nop-jcarousel .jcarousel-container {
+	position: static !important;
+    padding-top: 48px;
+}
+.nop-jcarousel .carousel-title + .jcarousel-container {
+	padding-top: 0;
+}
+.nop-jcarousel .jcarousel-clip {
+    overflow: hidden;
+}
+.nop-jcarousel .jcarousel-list-horizontal {
+    padding: 10px 0 !important;
+}
+
+/*** VERTICAL TITLE & CONTAINERS ***/
+.nop-jcarousel.vertical-holder{
+    margin:0;
+}
+.nop-jcarousel .carousel-title.vertical {
+    margin:0 0 65px;
+}
+.nop-jcarousel .jcarousel-container-vertical {
+	padding: 5px;
+}
+.nop-jcarousel .jcarousel-clip-vertical {
+    height: 555px !important;
+}
+.products-carousel .jcarousel-item-vertical .item-info .prices {
+    max-height:30px;
+    overflow:hidden;
+}
+.manufacturers-carousel .nop-jcarousel .jcarousel-clip-vertical {
+    height: 250px !important;
+}
+
+
+/*** NAVIGATION ***/
+
+.nop-jcarousel .jcarousel-prev-horizontal,
+.nop-jcarousel .jcarousel-next-horizontal {
+    position: absolute;
+    top: 47px;
+    width: 54px;
+    height: 57px;
+	background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.nop-jcarousel .jcarousel-prev-horizontal {
+    left: -60px;
+    top:55%;
+    background-image: url('images/arrow1.png');
+}
+.nop-jcarousel .jcarousel-next-horizontal {
+    right: -60px;
+    top:55%;
+    background-image: url('images/arrow-copy1.png');
+}
+.nop-jcarousel .jcarousel-prev-horizontal:hover,
+.nop-jcarousel .jcarousel-next-horizontal:hover {
+	border-color: #333;
+}
+.nop-jcarousel .jcarousel-prev-vertical,
+.nop-jcarousel .jcarousel-next-vertical {
+	position: absolute;
+    top: -10px;
+	width: 57px;
+	height: 54px;
+	background-position: center;
+    background-repeat: no-repeat;
+	cursor: pointer;
+}
+.nop-jcarousel .jcarousel-next-vertical {
+    top:auto;
+    bottom:0;
+	right: 0;
+    left:0;
+    margin:auto;
+    background-image: url('images/vertical-arrow-next.png');
+}
+.nop-jcarousel .jcarousel-prev-vertical {
+	right: 0;
+    left:0;
+    top:45px;
+    margin:auto;
+    background-image: url('images/vartical-arrow-prev.png');
+}
+
+.nop-jcarousel .jcarousel-next-disabled-horizontal,
+.nop-jcarousel .jcarousel-next-disabled-horizontal:hover,
+.nop-jcarousel .jcarousel-prev-disabled-horizontal,
+.nop-jcarousel .jcarousel-prev-disabled-horizontal:hover,
+.nop-jcarousel .jcarousel-prev-disabled-vertical,
+.nop-jcarousel .jcarousel-prev-disabled-vertical:hover,
+.nop-jcarousel .jcarousel-next-disabled-vertical,
+.nop-jcarousel .jcarousel-next-disabled-vertical:hover {
+    opacity: 0.3;
+	filter: alpha(opacity=30);
+    cursor: default;
+}
+
+/*** JCAROUSEL ITEM BOX ***/
+
+/*  If you change the margin from below to padding,
+	make sure that you have the border-sizing set to content-box,
+	so that the jcarousel script can calculate correctly the width of the item.  */
+	
+.nop-jcarousel .jcarousel-item-horizontal {
+    text-align: center;
+    font-size: 0;
+    margin: 0 5px;
+    position:relative;
+}
+.nop-jcarousel .jcarousel-item-vertical {
+    width: 100%;
+	padding: 5px;
+}
+/*.nop-jcarousel .jcarousel-item-vertical .item-info .button{
+    display:none;
+}*/
+
+.nop-jcarousel .item-picture img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.nop-jcarousel  .item-picture a:before{
+     content:'';
+     display:block;
+     padding-top:130%;
+}
+
+/* products */
+
+.products-carousel .item-holder {
+	-webkit-transition: box-shadow .2s ease-in-out;
+	transition: box-shadow .2s ease-in-out;
+}
+.products-carousel .item-holder:hover {
+}
+.products-carousel .item-picture {
+    margin:0 0 25px;
+}
+.products-carousel .item-picture a {
+	display: block;
+    position:relative;
+	width: 100%;
+	height: 100%;
+}
+.products-carousel .item-info {
+	margin: 0 10px;
+	text-align: left;
+}
+.products-carousel .item-info .jcarousel-product-title {
+    margin:0 0 5px;
+	overflow: hidden;
+	font-weight: 400;
+}
+.products-carousel .item-info .jcarousel-product-name {
+	display: block;
+	font-size: 14px;
+    max-height:37px;
+    color:#333;
+}
+.products-carousel .item-info .short-description {
+    display:none;
+	height: 36px;
+	margin: 0 0 10px;
+	overflow: hidden;
+	line-height: 1.3;
+	text-align: left;
+	font-size: 14px;
+	font-weight: 300;
+}
+.products-carousel .item-info .prices {
+    text-align:left;
+    margin:0 0 10px;
+}
+.products-carousel .item-info .old-price {
+	color: #999;
+	text-decoration: line-through;
+}
+.products-carousel .item-info .actual-price {
+	font-size: 24px;
+	color: #b7b7b7;
+    font-family:proxima-nova;
+}
+.product-rating-box{
+    display: block;
+    margin: 0 0 5px;
+}
+.product-rating-box .rating {
+    background: rgba(0, 0, 0, 0) url("images/rating1.png") repeat-x scroll 0 0;
+    height: 21px;
+    width: 82px;
+}
+.product-rating-box .rating div {
+    background: rgba(0, 0, 0, 0) url("images/rating2.png") repeat-x scroll 0 0;
+    height: 21px;
+}
+.products-carousel .item-info .button {
+	display: inline-block;
+	background: #333;
+	color: #fff;
+	position: relative;
+	vertical-align: middle;
+	font-size: 14px;
+    text-transform:uppercase;
+    font-family:proxima-nova;
+	padding: 12px 25px;
+
+}
+
+/* manufacturers */
+
+.manufacturers-carousel {
+	padding-bottom: 25px;
+}
+.manufacturers-carousel .item-picture a:before{
+    padding-top:75%;
+}
+.manufacturers-carousel .item-picture a {
+	display: block;
+    height:100%;
+    position:relative;
+}
+.manufacturers-carousel .item-picture a img {
+    max-height:100%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+}
+.manufacturers-carousel .item-info {
+	display: none;
+}
+
+/*** ADDITIONAL STYLES ***/
+
+
+/* If the wrap is set to circular and the carousel skin can display more items than there are,
+the carousel adds additional <li> elements to fill the empty spaces.
+This class is added only for those empty elements. They should not be visible. */
+
+.nop-jcarousel .jcarousel-item-placeholder-horizontal {
+    visibility: hidden;
+}
+
+
+@media all and (min-width: 769px) {
+
+/* products */
+
+.nop-jcarousel .carousel-title {
+	padding: 8px 0;
+    text-align:center;
+}
+
+/* products and categories nav */
+
+.products-carousel .jcarousel-prev-horizontal, 
+.products-carousel .jcarousel-next-horizontal,
+.categories-carousel .jcarousel-prev-horizontal,
+.categories-carousel .jcarousel-next-horizontal {
+	top: 8px;
+}
+.products-carousel .jcarousel-prev-horizontal,
+.categories-carousel .jcarousel-prev-horizontal {
+	left: -60px;
+    top:50%;
+	margin-left: 0 !important;
+}
+.products-carousel .jcarousel-next-horizontal,
+.categories-carousel .jcarousel-next-horizontal {
+	right: -60px;
+    top:50%;
+	margin-right: 0 !important;
+}
+
+
+}
+
+@media all and (min-width: 769px) and (max-width: 1000px) {
+
+/* manufacturers nav */
+
+.manufacturers-carousel .jcarousel-prev-horizontal,
+.manufacturers-carousel .jcarousel-next-horizontal {
+	top: 8px;
+	margin: 0 !important;
+}
+
+.manufacturers-carousel .jcarousel-prev-horizontal {
+	right: auto;
+	left: -60px;
+    top:48%;
+}
+
+.manufacturers-carousel .jcarousel-next-horizontal {
+	right: -60px;
+    top:48%;
+}
+
+}
+
+@media all and (min-width: 1001px) {
+
+/* manufacturers nav */
+
+.manufacturers-carousel .jcarousel-prev-horizontal,
+.manufacturers-carousel .jcarousel-next-horizontal {
+	margin: 0;
+	top: 105px;
+}
+.manufacturers-carousel .jcarousel-prev-horizontal {
+	left: -60px;
+}
+.manufacturers-carousel .jcarousel-next-horizontal {
+	right: -60px;
+}   
+
+}
+
+@media all and (min-width: 1171px) {
+    .nop-jcarousel{
+        margin:20px auto;
+        width:100%;
+        max-width:1050px;
+    }
+    /*CAROUSEL IN 2 COLUMNS LAYOUT*/
+    .center-2 .products-carousel {
+        width: 754px;
+        margin:20px 58px;
+    }
+}
+@media all and (min-width: 1330px){
+    .nop-jcarousel{
+        max-width:1170px;
+    }
+}

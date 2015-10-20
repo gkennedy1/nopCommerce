@@ -1,0 +1,115 @@
+﻿@using Nop.Web.Models.Catalog
+
+@model IList<CategorySimpleModel>
+
+@if (Model.Count > 0)
+{
+    <div class="home-page-category-tabs" data-get-products-url="@Url.Action("GetHomePageProductsByCategoryId", "UrbanTheme")">
+        <div class="titles">
+            <ul>
+                @foreach (var category in Model)
+                {
+                    <li><span class="home-page-category-anchor" data-category-id="@category.Id" title="@category.Name">@category.Name</span></li>
+                }
+            </ul>
+        </div>
+        <div class="contents">
+            @foreach (var category in Model)
+            {
+                <div class="home-page-category-content" data-category-id="@category.Id"></div>
+            }
+            <div class="ajax-loading-overlay">
+                <span class="ajax-loading-icon loader"></span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            /* Home Page Category Tabs */
+            homePageCategoriesInTabs();
+            $('.home-page-category-tabs .home-page-category-anchor').first().click();
+        });
+
+        function homePageCategoriesInTabs() {
+            if ($('.home-page-category-tabs').length == 0) {
+                return;
+            }
+
+            var getProductsUrl = $('.home-page-category-tabs').attr('data-get-products-url');
+            if (typeof getProductsUrl == 'undefined' || getProductsUrl == '') {
+                return;
+            }
+
+            $('.home-page-category-tabs .home-page-category-anchor').on('click', function () {
+                var currentThis = $(this);
+
+                var categoryId = currentThis.attr('data-category-id');
+                if (typeof categoryId == 'undefined' || categoryId == '' || categoryId == '0') {
+                    return;
+                }
+
+                var categoryContentElement = $('.home-page-category-tabs .home-page-category-content[data-category-id="' + categoryId + '"]');
+                if (categoryContentElement.length == 0) {
+                    return;
+                }
+
+                var isAlreadyLoaded = currentThis.attr('data-is-already-loaded');
+                if (typeof isAlreadyLoaded == 'undefined' || isAlreadyLoaded != 'true') {
+                    currentThis.attr('data-is-already-loaded', 'true');
+
+                    $('.home-page-category-tabs .ajax-loading-overlay').addClass('active');
+
+                    $.ajax({
+                        cache: false,
+                        type: 'POST',
+                        data: {
+                            'id': categoryId
+                        },
+                        url: getProductsUrl
+                    }).done(function (data) {
+
+                        if (data.trim().length == 0) {
+                            data = '<div class="no-products-found">' + '@T("SevenSpikes.Themes.Urban.HomePageCategories.NoProductsFound")' + '</div>';
+                        }
+                        categoryContentElement.html(data);
+
+                        // Show the selected tab, when its content is loaded
+                        currentThis.parent().addClass('active').siblings().removeClass('active');
+                        categoryContentElement.addClass('active').siblings('.home-page-category-content').removeClass('active');
+
+                        // Ajax Cart for the selected tab
+                        if (typeof nopAjaxCart !== "undefined" && nopAjaxCart.replaceAddToCartButtonsExternal !== undefined) {
+                            nopAjaxCart.replaceAddToCartButtonsExternal();
+                        }
+
+                        // Quick View for the selected tab
+                        if (typeof GetProductSelector !== "undefined" && typeof GetQuickViewButtonParentSelector !== "undefined" && typeof AddQuickViewButtons !== "undefined") {
+                            var productSelector = GetProductSelector();
+                            if (productSelector == "") {
+                                return;
+                            }
+                            var quickViewButtonParentSelector = GetQuickViewButtonParentSelector(productSelector);
+                            AddQuickViewButtons(productSelector, quickViewButtonParentSelector);
+                        }
+
+                        // Product Ribbons for the selected tab
+                        if (typeof nopProductRibbons != "undefined" && nopProductRibbons.showRibbons != undefined)
+                        {
+                            nopProductRibbons.showRibbons();
+                        }
+
+                    }).always(function () {
+                        $('.home-page-category-tabs .ajax-loading-overlay').removeClass('active');
+                        $('.home-page-category-tabs').trigger('homePageCategoriesProductsLoaded');
+                    });
+                } else {
+                    currentThis.parent().addClass('active').siblings().removeClass('active');
+                    categoryContentElement.addClass('active').siblings().removeClass('active');
+                }
+
+            });
+        }
+    </script>
+}

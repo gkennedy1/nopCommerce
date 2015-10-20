@@ -1,0 +1,14 @@
+﻿@model ForumGroupModel
+@using Nop.Web.Models.Boards;
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts(Model.Name);
+}
+<div class="forum-top-center">
+    @Html.Action("ForumBreadcrumb", new { forumGroupId = Model.Id })
+    @Html.Partial("_ForumHeader")
+</div>
+<div class="page forum-group-page">
+    @Html.Partial("_ForumGroup", Model)
+</div>

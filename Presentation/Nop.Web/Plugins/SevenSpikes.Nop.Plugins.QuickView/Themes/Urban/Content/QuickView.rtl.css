@@ -1,0 +1,68 @@
+﻿.quickViewWindow .purchase-area .prices,
+.quickViewWindow .overview .add-to-cart,
+.quickViewWindow .overview .right,
+.quickViewWindow .buttons-wrapper > div {
+	float: right;
+}
+.product-list .item-grid .quick-view-button,
+    .product-list .quick-view-button {
+	float: left;
+}
+.quickViewWindow .product-name,
+.quickViewWindow .product-grid .title,
+.quickViewWindow .overview .attributes .qq-uploader {
+	text-align: right;
+}
+*{
+	direction: rtl;
+}
+.product-list .buttonOverlay{
+	right: 0;
+	left: auto;
+}
+.center-2 .product-list .hover-2 .buttons-inner-wrapper .quick-view-button:after{
+	right: auto;
+	left: 0;
+}
+.quickView .k-window-titlebar.k-header .k-window-actions{
+	left: 10px;
+	right: auto;
+}
+.quickViewWindow .overview{
+	margin: 0 0 0 15px;
+}
+.quickViewWindow .gallery{
+	margin: 0 15px 0 0;
+}
+.quickViewWindow #accordion .product-details{
+	border-right: 1px solid #e1e1e1 !important;
+	border-left: 1px solid #e1e1e1 !important;
+}
+.quickViewWindow .product-variant:hover .variant-info{
+	right: 0;
+	left: 0;
+}
+.quickViewWindow .product-grid .title strong:before{
+	right: 0;
+	left: auto;
+}
+.quickViewWindow .product-grid .item-box{
+	margin: 0 2% 3% 0;
+}
+.product-list .quick-view-button::before{
+    display:none;
+}
+/********* GIFTCARD *********/
+
+    .quickViewWindow .giftcard{
+	margin-right: 0;
+}
+.quickViewWindow .giftcard label{
+	margin: 0 0 8px 10px;
+	text-align: right;
+}
+/*NEW LOADER*/
+.quickView .k-loading-image{
+	right: 0;
+	left: auto;
+}

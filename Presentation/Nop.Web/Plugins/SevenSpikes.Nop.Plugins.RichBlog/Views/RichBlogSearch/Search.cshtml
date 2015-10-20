@@ -1,0 +1,37 @@
+﻿@using SevenSpikes.Nop.Plugins.RichBlog.Models
+
+@model List<SearchModel>
+
+@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+}
+
+@section left {
+    @Html.Action("BlogMonths", "Blog")
+    @Html.Action("BlogTags", "Blog")
+}
+        
+<div class="page blog-search-results-page">
+    <div class="page-title">
+        <h1 class="section-title">@T("SevenSpikes.RichBlog.Public.Search.ResultsTitle")</h1>
+    </div>
+    <div class="page-body">
+        @if (Model.Count > 0)
+        {
+            <ul class="blog-search-results">
+                @foreach (var searchResult in Model)
+                {
+                    <li>
+                        <a class="kb-search-link" href="@Url.RouteUrl("HomePage")@searchResult.SEName" title="@searchResult.Title">@searchResult.Title</a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="no-results">
+                @T("SevenSpikes.RichBlog.Public.Search.NoResults")
+            </div>
+        }
+    </div>
+</div>
