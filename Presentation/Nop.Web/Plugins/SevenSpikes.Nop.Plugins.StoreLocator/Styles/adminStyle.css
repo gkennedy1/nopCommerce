@@ -1,0 +1,10 @@
+﻿#chooseLocationMap {
+    margin: 10px 0 20px;
+    height: 400px;
+}
+#shop-address-input {
+    display: none;
+    top: 28px !important;
+    padding: 6px 10px;
+    width: 270px;
+}

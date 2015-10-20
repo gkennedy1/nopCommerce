@@ -1,0 +1,83 @@
+﻿@** Copyright 2015 Seven Spikes Ltd. All rights reserved. (http://www.nop-templates.com)
+    * http://www.nop-templates.com/t/licensinginfo
+*@
+
+@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Web.Extensions
+@using SevenSpikes.Nop.Plugins.StoreLocator
+
+@model SevenSpikes.Nop.Plugins.StoreLocator.Models.StoreLocatorModel
+@{
+    var supportRtl = this.ShouldUseRtlTheme();
+
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.StoreLocator/Themes/" + Model.Theme + "/Content/StoreLocator.css");
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.StoreLocator/Themes/" + Model.Theme + "/Content/StoreLocator.rtl.css");
+    }
+
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/SevenSpikesExtensions.js");
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.StoreLocator/Scripts/StoreLocatorAllShops.min.js");
+}
+
+<div class="anywhere-page-map">
+    <div class="map-title">
+        <strong>@T("SevenSpikes.StoreLocator.Public.AnywhereMap.Title")</strong>
+    </div>
+    <div class="anywhere-page-map-body">
+        @if (Model.Shops.Count > 0)
+        {
+            <div class="map-wrapper">
+                <div id="all-shops-map-holder"></div>
+                <input id="shop-address-input" type="text" placeholder="@T("SevenSpikes.StoreLocator.Public.SearchMyLocation")" />
+            </div>
+            <div class="map-controls-panel">
+                <span class="control-button getUserGeoLocation">@T("SevenSpikes.StoreLocator.Public.ShowMyLocation")</span>
+                <span class="control-button align-map-button">@T("SevenSpikes.StoreLocator.Public.AlignMap")</span>
+            </div>
+    
+            <input type="hidden" class="shop-resources" data-youarehere="@T("SevenSpikes.StoreLocator.Public.YouAreHere")" 
+                   data-accuracy="@T("SevenSpikes.StoreLocator.Public.Accuracy")"
+                   data-geolocationnotsupported="@T("SevenSpikes.StoreLocator.Public.GeoLocationNotSupported")" 
+                   data-pathtoimages = "@Constants.PathToImagesFolder"
+                   value="1" />
+
+            <ul class="shops-list" style="display: none;">
+                @{
+                    int ind = 0;
+                }
+                @foreach (var shop in Model.Shops)
+                {
+                    <li data-ind="@(ind++)">
+                        @if (shop.DefaultShopImage != null)
+                        {
+                            <div class="image-holder">
+                                <a href="@Url.RouteUrl("HomePage")@shop.SeName" title="@shop.Name">
+                                    <img src="@shop.DefaultShopImage.PictureSrc" alt="@shop.DefaultShopImage.Alt" title="@shop.DefaultShopImage.Alt" />
+                                </a>
+                            </div>
+                        }
+                        <div class="name-description-wrapper">
+                            <h2><a href="@Url.RouteUrl("HomePage")@shop.SeName" title="@shop.Name" class="shop-name">@shop.Name</a></h2>
+                            <div class="distanceAndDirections">
+                                <input type="hidden" class="distanceToShopValue" value="0" />
+                                <p>@T("SevenSpikes.StoreLocator.Public.SortMethod.Distance"): <span class="distanceToShop">0 @T("SevenSpikes.StoreLocator.Public.SortMethod.SearchForShopInRadius.Measure")</span></p>
+                                <a class="show-directions">@T("SevenSpikes.StoreLocator.Public.ShowDirections")</a>
+                            </div>
+                            
+                            @if (!String.IsNullOrWhiteSpace(shop.ShortDescription))
+                            {
+                                <div class="short-description">
+                                    @Html.Raw(shop.ShortDescription)
+                                </div>
+                            }
+                            <a class="read-more" href="@Url.RouteUrl("HomePage")@shop.SeName" title="@shop.Name">@T("SevenSpikes.StoreLocator.Public.ReadMore")</a>
+                        </div>
+                        <input type="hidden" class="shop-coordinates" data-latitude="@shop.Latitude" data-longitude="@shop.Longitude" data-shop-title="@shop.Name" value="1" />
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

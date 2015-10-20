@@ -1,0 +1,125 @@
+﻿@model HeaderLinksModel
+
+@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Localization
+@using Nop.Services.Configuration
+@using Nop.Web.Framework.Themes
+@using Nop.Web.Models.Common
+
+@{
+    var currentStore = EngineContext.Current.Resolve<IStoreContext>().CurrentStore;
+    var isMenuMobile = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("urbanthemesettings.ismenumobile", false, currentStore.Id, true);
+}
+
+<div class="header-strip">
+    <div class="header-top-strip">
+
+        @if (!isMenuMobile)
+        {
+            @Html.Partial("Logo")
+        }
+
+        <ul class="header-buttons">
+            @if (Model.ShoppingCartEnabled)
+            {
+                <li class="shopping-cart-opener">
+                    <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart" title="@T("ShoppingCart")">
+                        <span class="cart-label">@T("ShoppingCart")</span>
+                        <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
+                    </a>
+                </li>
+            }
+            @if (Model.WishlistEnabled)
+            {
+                <li class="wishlist-opener">
+                    <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist" title="@T("Wishlist")">
+                        <span class="wishlist-label">@T("Wishlist")</span>
+                        <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+                    </a>
+                </li>
+            }
+            <li class="user-links-opener" title="@T("SevenSpikes.Themes.Urban.HeaderLinks.UserLinks")"></li>
+            <li class="search-opener" title="@T("Search")"></li>
+            <li class="header-selectors-opener" title="@T("SevenSpikes.Themes.Urban.HeaderLinks.Selector")"></li>
+            <li class="filters-button"><span>@T("SevenSpikes.Themes.Common.Filters")</span></li>
+        </ul>
+
+        <div class="header-menu">
+            <div class="close-menu">
+                <span>@T("SevenSpikes.Themes.Common.CloseMenu")</span>
+            </div>
+            @{
+                var menuHtml = Html.Widget("theme_header_menu");
+            }
+            @if (!MvcHtmlString.IsNullOrEmpty(menuHtml))
+            {
+                @menuHtml
+            }
+            else
+            {
+                @Html.Action("TopMenu", "Catalog")
+            }
+        </div>
+    </div>
+    <div class="header-bottom-strip">
+        <div class="header-links-wrapper">
+            @if (Model.ShoppingCartEnabled)
+            {
+                <div class="shopping-cart-wrapper">
+                    @Html.Action("FlyoutShoppingCart", "ShoppingCart")
+                </div>
+            }
+            <div class="user-links-wrapper">
+                <div class="header-links">
+                    <ul>
+                        @Html.Widget("header_links_before")
+                        @if (Model.IsAuthenticated)
+                        {
+                            if (Model.AllowPrivateMessages)
+                            {
+                                <li>
+                                    <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
+                                        <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
+                                        <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
+                                    </a>
+                                    @if (!string.IsNullOrEmpty(Model.AlertMessage))
+                                {
+                                    //new private message notification
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                displayPopupNotification('@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.AlertMessage))', 'success', false);
+                                            });
+                                        </script>
+                                }
+                                </li>
+                            }
+                            <li><a href="@Url.RouteUrl("CustomerInfo")" class="account">@Model.CustomerEmailUsername</a></li>
+                            <li><a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</a></li>
+                            <li><a href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</a></li>
+                        }
+                        @Html.Widget("header_links_after")
+                    </ul>
+                </div>
+            </div>
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    @Html.Action("SearchBox", "Catalog")
+                </div>
+            </div>
+            <div class="header-selectors-wrapper">
+                <div>
+                    @Html.Action("TaxTypeSelector", "Common")
+                    @Html.Action("CurrencySelector", "Common")
+                    @Html.Action("LanguageSelector", "Common")
+                    
+                    @Html.Widget("header_selectors")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

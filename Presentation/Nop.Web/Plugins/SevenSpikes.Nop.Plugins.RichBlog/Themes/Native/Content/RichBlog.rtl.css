@@ -1,0 +1,105 @@
+
+.blog-search-box span.search-box-text {
+	float: right;
+}
+.blog-search-box input.search-box-text {
+	float: right;
+}
+.blog-search-box .search-box-button {
+	float: right;
+}
+
+.blog-page .tags label,
+.blogpost-page .tags label {
+	margin: 0 0 0 10px;
+}
+.blog-page .tags li.separator,
+.blogpost-page .tags li.separator {
+	margin: 0 0 0 5px;
+}
+
+.post-relations label {
+	margin: 0 0 0 10px;
+}
+.post-relations li.separator {
+	margin: 0 0 0 5px;
+}
+
+.post-navigation .prev {
+	float: right;
+	text-align: right;
+}
+.post-navigation .next {
+	float: left;
+	text-align: left;
+}
+.post-navigation .prev:before {
+	right: 0;
+	left: auto;
+	background-image: url('images/next.png');
+}
+.post-navigation .next:before {
+	right: auto;
+	left: 0;
+	background-image: url('images/prev.png');
+}
+.post-navigation a:only-child {
+	float: right;
+}
+
+.blog-search-results li a:before {
+	right: 0;
+	left: auto;
+}
+
+@media all and (min-width:481px) {
+	
+.post-navigation .prev {
+	padding: 8px 40px 8px 12px;
+}
+.post-navigation .next {
+	padding: 8px 12px 8px 40px;
+}
+
+}
+
+@media all and (min-width:769px) {
+	
+.blog-page .tags {
+	float: left;
+}
+.blog-page .buttons {
+	float: right;
+}
+.blogpost-page .tags {
+	float: right;
+}
+.blog-page .post-actions .read-more {
+	float: right;
+}
+.blog-page .post-actions .share-post {
+	float: left;
+}
+.blogpost-page .post-relations {
+	float: right;
+	text-align: right;
+}
+.blogpost-page .post-actions {
+	float: left;
+}
+
+}
+
+@media all and (min-width:1001px) {
+	
+.rich-blog-homepage .blog-post {
+	float: right;
+}
+.rich-blog-homepage .post-description {
+	text-align: right;
+}
+.blog-search-results {
+	text-align: right;
+}
+
+}

@@ -1,0 +1,56 @@
+﻿@using Nop.Web.Models.Catalog
+
+@model IList<CategoryModel>
+
+@if (Model.Count > 0)
+{
+    var homePageCategoriesCss = string.Empty;
+    var homePageCategoriesBanner1 = Html.Widget("home_page_categories_banner1");
+    var homePageCategoriesBanner2 = Html.Widget("home_page_categories_banner2");
+
+    if (!MvcHtmlString.IsNullOrEmpty(homePageCategoriesBanner1) || !MvcHtmlString.IsNullOrEmpty(homePageCategoriesBanner2))
+    {
+        homePageCategoriesCss = "banner-included";
+    }
+
+    <div class="home-page-category-grid @homePageCategoriesCss">
+        <div class="item-grid">
+            @homePageCategoriesBanner1
+
+            @foreach (var item in Model.Take(2))
+            {
+                @ItemBoxPrinter(item)
+            }
+
+            @homePageCategoriesBanner2
+
+            @foreach (var item in Model.Skip(2))
+            {
+                @ItemBoxPrinter(item)
+            }
+        </div>
+        @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
+    </div>
+}
+
+@helper ItemBoxPrinter(CategoryModel item)
+{
+    var titleType = item.Name.Length > 6 ? "big-title" : "small-title";
+    var evenOrOdd = item.Name.Length % 2 == 0 ? "even" : "odd";
+
+    <div class="item-box">
+        <div class="category-item">
+            <h2 class="title @titleType @evenOrOdd">
+                <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                    <strong>@item.Name</strong>
+                    <span>@T("SevenSpikes.Themes.Urban.Catalog.ShopNow")</span>
+                </a>
+            </h2>
+            <div class="picture">
+                <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                    <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
+                </a>
+            </div>
+        </div>
+    </div>
+}

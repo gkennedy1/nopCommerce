@@ -1,0 +1,54 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Configuration
+@using Nop.Web.Models.Catalog
+
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+
+    var currentStore = EngineContext.Current.Resolve<IStoreContext>().CurrentStore;
+    var isHeaderInsideHomePageMainSlider = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("urbanthemesettings.isheaderinsidehomepagemainslider", false, currentStore.Id, true);
+    var homePageMainSlider = Html.Widget("home_page_main_slider");
+}
+
+@Html.Widget("body_start_html_tag_after")
+@Html.Partial("_Notifications")
+@Html.Action("JavaScriptDisabledWarning", "Common")
+@Html.Partial("OldInternetExplorerWarning")
+
+<div class="master-wrapper-page @{if (isHeaderInsideHomePageMainSlider){<text>header-inside-slider</text>} if (TempData.ContainsKey("IsHomePage")){<text> home-page </text>} }">
+    @Html.Action("AdminHeaderLinks", "Common")
+    @Html.Partial("Header")
+
+    @if (TempData.ContainsKey("IsHomePage") && !MvcHtmlString.IsNullOrEmpty(homePageMainSlider))
+    {
+        <div class="home_page_main_slider">
+            @homePageMainSlider
+        </div>
+    }
+
+    <div class="master-wrapper-content">
+        <script type="text/javascript">
+            AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+        </script>
+        @Html.Widget("content_before")
+        @*ajax loading window*@
+        <div class="ajax-loading-block-window" style="display: none">
+            <div class="loading-image">
+            </div>
+        </div>
+        <div class="master-wrapper-main">
+            @RenderBody()
+        </div>
+        @Html.Widget("content_after")
+    </div>
+    <div class="overlayOffCanvas"></div>
+</div>
+
+@Html.Action("Footer", "Common")
+@Html.Action("EuCookieLaw", "Common")
+@Html.Widget("body_end_html_tag_before")
+
+@{
+    TempData.Remove("IsHomePage");
+}

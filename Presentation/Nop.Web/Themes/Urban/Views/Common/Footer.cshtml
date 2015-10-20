@@ -1,0 +1,126 @@
+﻿@model FooterModel
+@using Nop.Core;
+@using Nop.Core.Domain;
+@using Nop.Core.Domain.Tax;
+@using Nop.Core.Infrastructure;
+@using Nop.Services.Configuration;
+@using Nop.Web.Models.Common;
+
+@{
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+
+    var settingService = EngineContext.Current.Resolve<ISettingService>();
+    var storeInformationSettings = EngineContext.Current.Resolve<StoreInformationSettings>();
+
+    var facebookUrl = storeInformationSettings.FacebookLink;
+    var twitterLink = storeInformationSettings.TwitterLink;
+    var googlePlusLink = storeInformationSettings.GooglePlusLink;
+    var youTubeLink = storeInformationSettings.YoutubeLink;
+    var pinterestUrl = settingService.GetSettingByKey("urbanthemesettings.pinteresturl", String.Empty, storeId, true).ToLowerInvariant();
+    var vimeoUrl = settingService.GetSettingByKey("urbanthemesettings.vimeourl", String.Empty, storeId, true).ToLowerInvariant();
+    var instagramUrl = settingService.GetSettingByKey("urbanthemesettings.instagramurl", String.Empty, storeId, true).ToLowerInvariant();
+    var removeCopyright = settingService.GetSettingByKey("urbanthemesettings.removecopyright", false, storeId, true);
+}
+
+<div class="footer">
+    <div class="footer-upper">
+        <div class="social-buttons">
+            <ul>
+                @if (!String.IsNullOrEmpty(facebookUrl))
+                {
+                    <li><a href="@facebookUrl" class="facebook" target="_blank"></a></li>
+                }
+                @if (!String.IsNullOrEmpty(twitterLink))
+                {
+                    <li><a href="@twitterLink" class="twitter" target="_blank"></a></li>
+                }
+                @if (!String.IsNullOrEmpty(googlePlusLink))
+                {
+                    <li><a href="@googlePlusLink" class="google" target="_blank"></a></li>
+                }
+                @if (!string.IsNullOrEmpty(pinterestUrl))
+                {
+                    <li><a href="@pinterestUrl" class="pinterest" target="_blank"></a></li>
+                }
+                @if (!string.IsNullOrEmpty(youTubeLink))
+                {
+                    <li><a href="@youTubeLink" class="youtube" target="_blank"></a></li>
+                }
+                @if (Model.NewsEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("NewsRSS", new {languageId = Model.WorkingLanguageId})" class="rss" target="_blank"></a></li>
+                }
+            </ul>
+
+            @Html.Widget("urban_footer_map")
+        </div>
+    </div>
+    <div class="footer-middle">
+        <div class="leftside">
+            @Html.Action("NewsletterBox", "Newsletter")
+        </div>
+        <div class="rightside">
+            @if (!string.IsNullOrWhiteSpace(instagramUrl))
+            {
+                <div class="footer-box">
+                    <a class="instagram" href="@instagramUrl" target="_blank"></a>
+                </div>
+            }
+            <div class="footer-box">
+                <ul>
+                    @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn1).ToList())
+                    {
+                        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                    }
+                    <li><a href="@Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("LoginRegistrationInfo") })">@T("SevenSpikes.Themes.Urban.Common.LoginRegistrationInfo")</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <ul>
+                    @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn2).ToList())
+                    {
+                        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                    }
+                    <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                    @if (Model.BlogEnabled)
+                    {
+                        <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-lower">
+        <div class="footer-disclaimer">
+            @T("Content.CopyrightNotice", DateTime.Now.Year, Model.StoreName)
+        </div>
+        @if (!removeCopyright)
+        {
+            <div class="footer-powered-by">
+                Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a>
+                @*Would you like to remove the "Powered by nopCommerce" link in the bottom of the footer?
+                    Find more info here http://www.nopcommerce.com/copyrightremoval.aspx*@
+            </div>
+        }
+        <ul class="accepted-payment-methods">
+            <li class="method1"></li>
+            <li class="method2"></li>
+            <li class="method3"></li>
+            <li class="method4"></li>
+            <li class="method5"></li>
+            <li class="method6"></li>
+        </ul>
+        @if (Model.DisplayTaxShippingInfoFooter)
+        {
+            var inclTax = EngineContext.Current.Resolve<IWorkContext>().TaxDisplayType == TaxDisplayType.IncludingTax;
+            <div class="footer-tax-shipping">
+                @T(inclTax ? "Footer.TaxShipping.InclTax" : "Footer.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
+            </div>
+        }
+
+        <div class="footer-store-theme">
+            @Html.Action("StoreThemeSelector", "Common")
+        </div>
+    </div>
+    @Html.Widget("footer")
+</div>

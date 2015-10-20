@@ -1,0 +1,49 @@
+﻿/*** QUANTITY BOX & BUY BUTTON ***/
+
+.product-list .ajax-cart-button-wrapper,
+.hover-2 .buttons-inner-wrapper span,
+.hover-2 .buttons-inner-wrapper input,
+.product-list .item-box .hover-2 .quantityWrapper,
+.miniProductDetailsView .add-to-cart > *,
+.miniProductDetailsView .add-button-wrap,
+.miniProductDetailsView .message-error,
+.ajaxCart .k-window-title {
+	float: right;
+}
+.productAddedToCartWindowTitle,
+.ajaxCart .product-grid .title {
+	text-align: right;
+}
+*{
+	direction: rtl;
+}
+.product-list .hover-2 .buttons-inner-wrapper .ajax-cart-button-wrapper > *,
+.product-list .hover-2 .buttons-inner-wrapper .ajax-cart-button-wrapper .quantityWrapper> *{
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+.productAddedToCartWindowImage img{
+	left: 0;
+	right: 0;
+}
+.productAddedToCartWindowDescription{
+	padding: 10px 0 0 5px;
+}
+.ajaxCart .product-grid .title:before{
+	right: 0;
+	left: auto;
+}
+.ajaxCart .item-box{
+	margin: 0 2% 3% 0;
+}
+.miniProductDetailsView .product-name{
+	text-align: right;
+	right: 10px;
+	left: auto;
+}
+/*AJAX LOADER*/
+.nopAjaxCartPanelAjaxBusy, 
+.miniProductDetailsPanelAjaxBusy{
+	right: 0;
+	left: 0;
+}

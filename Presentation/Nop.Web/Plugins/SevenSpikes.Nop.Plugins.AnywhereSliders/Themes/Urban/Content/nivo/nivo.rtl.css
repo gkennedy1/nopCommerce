@@ -1,0 +1,94 @@
+* {
+        direction: rtl;
+    }
+.home-page-category-grid.banner-included .item-box:nth-child(3n) {
+    margin: 0 1% 1% 0;
+}
+ 
+@media all and (min-width: 1001px) {
+    
+    .home-page-category-grid.banner-included .slider-wrapper,
+    .item-grid .slider-wrapper {
+        float: left;
+    }
+
+    /*home page item-box with banners*/
+    .home-page-category-grid.banner-included .item-box:nth-child(3n) {
+        margin: 0 0 1% 1% !important;
+    }
+    .home-page-category-grid.banner-included .item-box:last-child {
+        float: left !important;
+    }
+
+    */ a.nivo-prevNav {
+        right: 1%;
+        left: auto;
+    }
+
+    a.nivo-nextNav {
+        left: 1%;
+        right: auto;
+    }
+    /* BULLET NAVIGATION */ /*removed*/
+
+    .nivo-controlNav {
+        right: 0;
+        left: auto;
+    }
+
+    .home-page-category-grid.banner-included .slider-wrapper:nth-child(2n) {
+        float: right;
+        clear: right;
+    }
+
+    .home-page-category-grid.banner-included .item-box:nth-child(3n) {
+        margin: 0 0 1% 0;
+    }
+
+    .home-page-category-grid.banner-included .item-box:nth-child(n+4) {
+        float: left;
+        margin: 0 0 1% 0;
+    }
+
+    .home-page-category-grid.banner-included .item-box:nth-child(n+7) {
+        float: right !important;
+        margin: 0 0 1% 1%;
+    }
+    /*in case there is only one banner*/
+    .home-page-category-grid.banner-included .item-box.oneBannerOnly {
+        margin: 0 0 1% 1%;
+        float: right;
+        clear: left;
+    }
+
+    .home-page-category-grid.banner-included .item-box .title.big-title a span:before {
+        margin: 0 -15px 5px 0;
+    }
+    /*main slider only*/
+    a.nivo-prevNav {
+        right: 1%;
+        left: auto;
+    }
+
+    a.nivo-nextNav {
+        left: 1%;
+        right: auto;
+    }
+
+    .home-page-category-grid.banner-included .slider-wrapper:nth-child(2n) {
+        margin: 0 0 1% 1%;
+        float: right;
+    }
+    .home-page-category-grid.banner-included .item-box:nth-child(n+7) {
+        float: right !important;
+    }
+
+        .home-page-category-grid.banner-included .item-box:nth-child(n+7):nth-child(2n) {
+            margin: 0 2% 1% 0 !important;
+        }
+
+    .home-page-category-grid.banner-included .clearingWrapper .oneBannerOnly:nth-child(2n+1) {
+        float: right !important;
+        margin: 0 0 1% 2% !important;
+    }
+}

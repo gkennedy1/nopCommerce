@@ -1,0 +1,25 @@
+*{
+	direction: rtl;
+}
+.jcarousel-skin-thumbs .jcarousel-prev-horizontal{
+	right: 0px;
+	left: auto;
+}
+.jcarousel-skin-thumbs .jcarousel-next-horizontal{
+	left: 0px;
+	right: auto;
+}
+.jcarousel-skin-thumbs .jcarousel-next-horizontal{
+	left: 15px;
+	right: auto;
+}
+.jcarousel-skin-thumbs .jcarousel-prev-horizontal{
+	right: 15px;
+	left: auto;
+}
+.jcarousel-skin-thumbs .jcarousel-prev-horizontal {
+    background-image: url("images/next-horizontal-new.png");
+}
+.jcarousel-skin-thumbs .jcarousel-next-horizontal {
+    background-image: url("images/prev-horizontal-new.png");
+}

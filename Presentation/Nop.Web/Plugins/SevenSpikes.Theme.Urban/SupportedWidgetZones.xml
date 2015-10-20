@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SupportedWidgetZones>
+  <WidgetZone>urban_theme_logo</WidgetZone>
+  <WidgetZone>head_html_tag_after_css_files_urban</WidgetZone>
+  <WidgetZone>home_page_urban_categories</WidgetZone>
+  <WidgetZone>urban_product_page_category</WidgetZone>
+  <WidgetZone>urban_footer_map</WidgetZone>
+</SupportedWidgetZones>

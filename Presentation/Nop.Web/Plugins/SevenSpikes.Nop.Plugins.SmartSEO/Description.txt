@@ -1,0 +1,8 @@
+﻿Group: 7Spikes
+FriendlyName: Nop Smart SEO
+SystemName: SevenSpikes.Nop.Plugins.SmartSEO
+Version: 3.60
+SupportedVersions: 3.60
+Author: Seven Spikes
+DisplayOrder: 1
+FileName: SevenSpikes.Nop.Plugins.SmartSEO.dll
